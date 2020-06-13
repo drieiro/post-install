@@ -1,0 +1,60 @@
+#!/bin/bash
+
+function install_all {
+    # Comment all programs you don't want to install
+    # when executing the 'Install everything' option of the main script
+    install_brave
+    install_build-essentials
+    install_calibre
+    install_ciano
+    install_dconf
+    install_dropbox
+    install_easytag
+    install_etweaks
+    install_ffmpeg
+    install_firefox
+    install_formatter
+    install_gimp
+    install_git-all
+    install_hplip
+    install_imageburner
+    install_java8
+    install_keepassxc
+    install_libreoffice_fresh # install_libreoffice_repo
+    install_megasync
+    install_mpv_repo # install_mpv_fresh
+    install_neofetch
+    install_neovim
+    install_net-tools
+    install_opera
+    install_papirus
+    install_pdftricks
+    install_picard
+    install_playmymusic
+    install_rclone
+    install_ripgrep
+    install_screencast
+    install_shellcheck
+    install_spotify
+    install_synaptic
+    install_teamviewer
+    install_telegram
+    install_thunderbird
+    install_tlp
+    install_trash-cli
+    install_tree
+    install_ulauncher
+    install_unrar
+    install_virtualbox
+    install_vlc
+    install_vscode
+    install_wireshark
+    install_youtube
+    install_zsh
+#    install_vscodium
+#    install_anydesk
+#    install_chrome
+#    install_handbrake
+#    install_timeshift
+    install_dotfiles    # Configure your dotfiles at 'data/dotfiles'
+}

@@ -1,0 +1,8 @@
+apt-transport-https
+curl
+git
+make
+software-properties-common
+wget
+whiptail
+xterm

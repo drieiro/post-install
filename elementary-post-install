@@ -1,0 +1,116 @@
+#!/usr/bin/env bash
+#
+# elementary-post-install
+# Based on ubuntu-post-install by Sam Hewitt <sam@snwh.org>
+#
+
+# tab width
+tabs 4
+clear
+
+# Script title
+TITLE="elementary-post-install"
+
+# Install script dependencies
+function dependencies {
+    for dep in $(cat $(dirname "$0")/dependencies); do
+        if dpkg -l | grep "$dep" &>/dev/null; then
+            echo_message success "Dependency '$dep' installed!"
+        else
+            echo_message info "Installing '$dep'..."
+            sudo apt install "$dep" &>/dev/null
+        fi
+    done
+}
+
+# Import scriptset functions
+function import_functions {
+    for function in $(dirname "$0")/data/*; do
+        [ ! -d $function ] && source $function
+    done
+}
+
+function main {
+    MAIN=$(eval `resize` && whiptail \
+        --notags \
+        --title "$TITLE" \
+        --menu "\nWhat would you like to install?" \
+        --cancel-button "Quit" \
+        $LINES $COLUMNS $(( $LINES - 12 )) \
+        'install_all'           'Install everything' \
+        'install_dotfiles'      'Install dotfiles' \
+        'install_anydesk'       'AnyDesk' \
+        'install_brave'         'Brave Browser' \
+        'install_calibre'       'Calibre' \
+        'install_chrome'        'Google Chrome' \
+        'install_ciano'         'Ciano' \
+        'install_dconf'         'dconf editor' \
+        'install_dropbox'       'Dropbox' \
+        'install_easytag'       'Easytag' \
+        'install_etweaks'       'elementary tweaks' \
+        'install_firefox'       'Firefox' \
+        'install_formatter'     'Formatter' \
+        'install_gimp'          'Gimp' \
+        'install_handbrake'     'HandBrake' \
+        'install_hplip'         'HPLIP' \
+        'install_imageburner'   'Imageburner' \
+        'install_java8'         'Java8' \
+        'install_keepassxc'     'KeePassXC' \
+        'install_libreoffice'   'LibreOffice' \
+        'install_megasync'      'MegaSync' \
+        'install_mpv'           'mpv' \
+        'install_neofetch'      'Neofetch' \
+        'install_neovim'        'Neovim' \
+        'install_opera'         'Opera' \
+        'install_papirus'       'Papirus Icon Theme' \
+        'install_pdftricks'     'PDF Tricks' \
+        'install_picard'        'MusicBrainz Picard' \
+        'install_planner'       'Planner' \
+        'install_playmymusic'   'Melody' \
+        'install_rclone'        'rclone' \
+        'install_screencast'    'Screencast' \
+        'install_spotify'       'Spotify' \
+        'install_synaptic'      'Synaptic' \
+        'install_teamviewer'    'TeamViewer' \
+        'install_telegram'      'Telegram' \
+        'install_terminal'      'Terminal stuff' \
+        'install_thunderbird'   'Thunderbird' \
+        'install_timeshift'     'Timeshift' \
+        'install_ulauncher'     'Ulauncher' \
+        'install_unrar'         'RAR' \
+        'install_virtualbox'    'VirtualBox' \
+        'install_vlc'           'VLC' \
+        'install_vscode'        'Visual Studio Code' \
+        'install_vscodium'      'VSCodium' \
+        'install_wireshark'     'Wireshark' \
+        'install_youtube-dl'    'youtube-dl' \
+        'install_zsh'           'zsh' \
+        3>&1 1>&2 2>&3)
+    if [ $? = 0 ]; then
+        $MAIN
+    else
+        # Quit
+        quit
+    fi
+}
+
+function quit {
+    # Draw window
+    if (whiptail --title "Quit" --yesno "Are you sure you want quit?" 8 56); then
+            echo 'Thanks for using!'
+            exit 99
+    else
+            main
+    fi
+}
+
+import_functions
+welcome
+dependencies
+check_os
+check_distribution
+
+while :
+do
+    main
+done

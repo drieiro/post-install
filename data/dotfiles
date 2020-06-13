@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+function install_dotfiles {
+
+    # Local path where the dotfiles will be stored
+    path="$HOME/.dotfiles"
+
+    # Git repo where the dotfiles are located. The repo should have an 'install.sh' script
+    gitrepo="https://github.com/riesp/dotfiles.git"
+
+    [ ! -d $path ] && git clone $gitrepo $path
+    $path/install.sh
+}

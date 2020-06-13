@@ -1,0 +1,401 @@
+#!/usr/bin/env bash
+
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+# Warning about elementary apps in other distributions
+function elementary {
+    if [ $(lsb_release -si) != 'elementary' ]; then
+        if [ ! -e /etc/apt/sources.list.d/elementary.list ]; then
+        echo "You are not running elementary OS. This app will not work. :("
+        echo "  If you want to install this app, install elementary's repository:"
+        echo "  https://gist.githubusercontent.com/riesp/7058e71d52a2ce6a42e8b93f30f55473/raw/appcenter.sh"
+        echo 
+        exit 1
+        fi
+    fi
+}
+
+# Ubuntu codename for elementary
+case $(lsb_release -cs) in
+    loki)
+        codename="xenial" ;;
+    juno|hera)
+        codename="bionic" ;;
+    odin)
+        codename="focal" ;;
+    *)
+        codename="$(lsb_release -cs)" ;;
+esac
+
+#
+#------------------------------------------------------------
+# Apps installation
+#------------------------------------------------------------
+#
+
+function install_brave {
+    curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
+    echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+    sudo apt-get -y install brave-browser brave-keyring
+}
+
+function install_chrome {
+    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+    echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google.list
+    update-repo google.list
+    sudo apt-get -y install google-chrome-stable
+}
+
+function install_vscode {
+    wget -O /tmp/vscode.deb https://go.microsoft.com/fwlink/?LinkID=760868 && sudo dpkg -i /tmp/vscode.deb
+}
+
+function install_vscodium {
+    wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo apt-key add -
+    echo 'deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
+    update-repo vscodium.list
+    sudo apt-get -y install codium
+}
+
+
+function install_firefox {
+    sudo apt-get -y install firefox firefox-locale-es firefox-locale-gl
+}
+
+function install_dropbox {
+    echo "deb https://linux.dropbox.com/ubuntu $codename main" | sudo tee /etc/apt/sources.list.d/dropbox.list
+    sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
+    sudo apt-get -y install dropbox
+}
+
+function install_libreoffice {
+
+    function install_libreoffice_repo {
+        sudo apt-get -y install libreoffice libreoffice-l10n-gl libreoffice-l10n-es libreoffice-help-gl libreoffice-help-es
+    }
+
+    function install_libreoffice_fresh {
+        sudo add-apt-repository -yu ppa:libreoffice/ppa
+        sudo apt-get -y install libreoffice libreoffice-l10n-gl libreoffice-l10n-es libreoffice-help-gl libreoffice-help-es
+    }
+
+    NAME="LibreOffice"
+    LIBREOFFICE=$(eval `resize` && whiptail \
+            --notags \
+            --title "Install $NAME" \
+            --menu "\nWhat would you like to install?" \
+            --ok-button "Install" \
+            --cancel-button "Go Back" \
+            $LINES $COLUMNS $(( $LINES - 12 )) \
+            'install_libreoffice_repo'          'Install LibreOffice (distribution repository)' \
+            'install_libreoffice_fresh'         'Install LibreOffice Fresh (latest stable version)' \
+            3>&1 1>&2 2>&3)
+    # check exit status
+    if [ $? = 0 ]; then
+            $LIBREOFFICE
+    else
+            # Cancelled
+            main
+    fi
+}
+
+function install_thunderbird {
+    sudo apt-get -y install thunderbird thunderbird-locale-es thunderbird-locale-gl
+}
+
+function install_neovim {
+    curl -s https://gist.githubusercontent.com/riesp/9ac978b3aa17f43db25afa6cae7d1abd/raw/nvim_update \
+        | sudo bash
+}
+
+function install_calibre {
+    elementary
+    wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
+}
+
+function install_ciano {
+    elementary
+    sudo apt-get -y install com.github.robertsanseries.ciano
+}
+
+function install_dconf {
+    sudo apt-get -y install dconf-editor
+}
+
+function install_easytag {
+    sudo apt-get -y install easytag
+}
+
+function install_etweaks {
+    elementary
+    sudo add-apt-repository -yu ppa:philip.scott/elementary-tweaks  
+    sudo apt-get -y install elementary-tweaks
+}
+
+function install_formatter {
+    elementary
+    sudo apt-get -y install com.github.djaler.formatter
+}
+
+function install_gimp {
+    sudo apt-get -y install gimp
+}
+
+# function install_gdocamlfuse {
+#     sudo add-apt-repository -yu ppa:alessandro-strada/ppa
+#     sudo apt-get -y install google-drive-ocamlfuse
+# }
+
+function install_rclone {
+    curl -s https://gist.githubusercontent.com/riesp/1b7c6e691ae5ab64305c5079961a4c4a/raw/rclone_update \
+        | sudo bash
+}
+
+function install_imageburner {
+    elementary
+    sudo apt-get -y install com.github.artemanufrij.imageburner
+}
+
+function install_java8 {
+    sudo add-apt-repository -yu ppa:webupd8team/java
+    sudo apt-get -y install oracle-java8-installer
+}
+
+function install_keepassxc {
+    sudo add-apt-repository -yu ppa:phoerious/keepassxc
+    sudo apt-get -y install keepassxc
+}
+
+function install_megasync {
+    sudo apt-get -y install https://mega.nz/linux/MEGAsync/xUbuntu_18.04/amd64/megasync-xUbuntu_18.04_amd64.deb
+}
+
+function install_playmymusic {
+    elementary
+    sudo apt-get -y install com.github.artemanufrij.playmymusic
+}
+
+function install_opera {
+    sudo wget -qO- https://deb.opera.com/archive.key | sudo apt-key add -
+    sudo add-apt-repository -yu "deb [arch=i386,amd64] https://deb.opera.com/opera-stable/ stable non-free"
+    sudo apt-get -y install opera-stable
+}
+
+function install_papirus {
+    sudo add-apt-repository -yu ppa:papirus/papirus
+    sudo apt-get -y install papirus-icon-theme
+}
+
+function install_pdftricks {
+    elementary
+    sudo apt-get -y install com.github.muriloventuroso.pdftricks
+}
+
+function install_spotify {
+    curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
+    echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+    update-repo spotify.list
+    sudo apt-get -y install spotify-client
+}
+
+function install_ulauncher {
+    sudo add-apt-repository -yu ppa:agornostal/ulauncher
+    sudo apt-get -y install ulauncher
+}
+
+function install_youtube-dl {
+    sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+    sudo chmod a+rx /usr/local/bin/youtube-dl
+}
+
+function install_zsh {
+    sudo apt-get -y install zsh
+}
+
+function install_hplip {
+    sudo apt-get -y install hplip hplip-gui hplip-doc
+}
+
+function install_wireshark {
+    sudo apt-get -y install wireshark
+}
+
+function install_virtualbox {
+    echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian $codename contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
+    wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+    update-repo virtualbox.list
+    vboxversion=$(apt search virtualbox | grep -E '^virtualbox-[0-9].[0-9]' | sort | tail -1 | cut -d"/" -f"1")
+    sudo apt-get -y install $vboxversion
+}
+
+function install_neofetch {
+    nftemp=$(mktemp)
+    curl -s https://api.github.com/repos/dylanaraps/neofetch/releases/latest \
+    | grep "tarball" \
+    | awk '{print $2}' \
+    | tr -d \", \
+    | xargs wget -O $nftemp && cd /tmp \
+    && tar xzvf $nftemp && cd dylanaraps* \
+    && sudo make install
+}
+
+function install_vlc {
+    sudo apt-get -y install vlc
+}
+
+function install_terminal {
+
+    function install_net-tools {
+        sudo apt-get -y install net-tools
+    }
+
+    function install_trash-cli {
+        sudo apt-get -y install trash-cli
+    }
+
+    function install_git-all {
+        sudo apt-get -y install git-all
+    }
+
+    function install_build-essentials {
+        sudo apt-get -y install build-essential
+    }
+
+    function install_ffmpeg {
+        sudo apt-get -y install ffmpeg
+    }
+
+    function install_tlp {
+        sudo apt-get -y install tlp
+    }
+
+    function install_shellcheck {
+        sudo apt-get -y install shellcheck
+    }
+
+    function install_ripgrep {
+        curl -s https://gist.githubusercontent.com/riesp/d064bc39e0197d02a869fb7035d1fe94/raw/rg_update | sudo bash
+    }
+
+    function install_tree {
+        sudo apt-get -y install tree
+    }
+
+    NAME="Terminal stuff"
+    TERMINALSTUFF=$(eval `resize` && whiptail \
+            --notags \
+            --title "Install $NAME" \
+            --menu "\nWhat would you like to install?" \
+            --ok-button "Install" \
+            --cancel-button "Go Back" \
+            $LINES $COLUMNS $(( $LINES - 12 )) \
+            'install_build-essentials'   'build-essentials' \
+            'install_ffmpeg'             'ffmpeg' \
+            'install_git-all'            'git-all' \
+            'install_net-tools'          'net-tools' \
+            'install_ripgrep'            'Ripgrep' \
+            'install_shellcheck'         'shellcheck' \
+            'install_tlp'                'tlp' \
+            'install_trash-cli'          'trash-cli' \
+            'install_tree'               'tree' \
+            3>&1 1>&2 2>&3)
+    # check exit status
+    if [ $? = 0 ]; then
+            $TERMINALSTUFF
+    else
+            # Cancelled
+            main
+    fi
+}
+
+function install_teamviewer {
+    wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb -O /tmp/teamviewer_amd64.deb \
+        && sudo dpkg -i /tmp/teamviewer_amd64.deb
+}
+
+function install_synaptic {
+    sudo apt-get -y install synaptic
+}
+
+function install_unrar {
+    sudo apt-get -y install unrar
+}
+
+function install_picard {
+    sudo apt-get -y install picard
+    # Install from PPA if it's not available in Ubuntu's repos.
+    if [ $? -eq 100 ]; then
+        sudo add-apt-repository -yu ppa:musicbrainz-developers/stable
+        sudo apt-get -y install picard
+    fi
+}
+
+function install_anydesk {
+    wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | sudo apt-key add -
+    echo "deb http://deb.anydesk.com/ all main" | sudo tee /etc/apt/sources.list.d/anydesk-stable.list
+    update-repo anydesk-stable.list
+    sudo apt-get -y install anydesk
+}
+
+function install_handbrake {
+    sudo add-apt-repository -yu ppa:stebbins/handbrake-releases
+    sudo apt-get -y install handbrake-gtk
+}
+
+function install_mpv {
+    function install_mpv_fresh {
+        wget -qO- https://non-gnu.uvt.nl/debian/uvt_key.asc | sudo apt-key add -
+        echo "deb https://non-gnu.uvt.nl/debian $codename uvt" | sudo tee /etc/apt/sources.list.d/uvt.list
+        update-repo uvt.list
+        sudo apt-get -y install mpv-git
+    }
+    function install_mpv_repo {
+        sudo apt-get -y install mpv
+    }
+
+    NAME="mpv"
+    MPV=$(eval `resize` && whiptail \
+            --notags \
+            --title "Install $NAME" \
+            --menu "\nWhat would you like to install?" \
+            --ok-button "Install" \
+            --cancel-button "Go Back" \
+            $LINES $COLUMNS $(( $LINES - 12 )) \
+            'install_mpv_repo'   'Install mpv from distributions repository' \
+            'install_mpv_fresh'  'Install latest version of mpv from an external repository (uvt.nl)' \
+            3>&1 1>&2 2>&3)
+    # check exit status
+    if [ $? = 0 ]; then
+            $MPV
+    else
+            # Cancelled
+            main
+    fi
+}
+
+function install_planner {
+    elementary
+    sudo apt-get -y install com.github.alainm23.planner
+}
+
+function install_screencast {
+    elementary
+    sudo apt-get -y install com.github.artemanufrij.screencast
+}
+
+function install_telegram {
+    TGTEMP=$(mktemp)
+    curl -s https://api.github.com/repos/telegramdesktop/tdesktop/releases/latest \
+        | grep "browser_download_url" \
+        | grep "tsetup\." \
+        | awk '{print $2}' \
+        | tr -d \" \
+        | xargs wget -O $TGTEMP \
+        && cd /tmp
+    tar xvf $TGTEMP && sudo mv Telegram /opt
+}
+
+function install_timeshift {
+    sudo add-apt-repository -yu ppa:teejee2008/timeshift
+    sudo apt-get -y install timeshift
+}
