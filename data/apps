@@ -36,47 +36,47 @@ esac
 function install_brave {
     curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
     echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-    sudo apt-get -y install brave-browser brave-keyring
+    sudo apt -y install brave-browser brave-keyring
 }
 
 function install_chrome {
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
     echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google.list
     update-repo google.list
-    sudo apt-get -y install google-chrome-stable
+    sudo apt -y install google-chrome-stable
 }
 
 function install_vscode {
-    wget -O /tmp/vscode.deb https://go.microsoft.com/fwlink/?LinkID=760868 && sudo dpkg -i /tmp/vscode.deb
+    wget -O /tmp/vscode.deb https://go.microsoft.com/fwlink/?LinkID=760868 && sudo apt -y install /tmp/vscode.deb
 }
 
 function install_vscodium {
     wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo apt-key add -
     echo 'deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
     update-repo vscodium.list
-    sudo apt-get -y install codium
+    sudo apt -y install codium
 }
 
 
 function install_firefox {
-    sudo apt-get -y install firefox firefox-locale-es firefox-locale-gl
+    sudo apt -y install firefox firefox-locale-es firefox-locale-gl
 }
 
 function install_dropbox {
     echo "deb https://linux.dropbox.com/ubuntu $codename main" | sudo tee /etc/apt/sources.list.d/dropbox.list
     sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
-    sudo apt-get -y install dropbox
+    sudo apt -y install dropbox
 }
 
 function install_libreoffice {
 
     function install_libreoffice_repo {
-        sudo apt-get -y install libreoffice libreoffice-l10n-gl libreoffice-l10n-es libreoffice-help-gl libreoffice-help-es
+        sudo apt -y install libreoffice libreoffice-l10n-gl libreoffice-l10n-es libreoffice-help-gl libreoffice-help-es
     }
 
     function install_libreoffice_fresh {
         sudo add-apt-repository -yu ppa:libreoffice/ppa
-        sudo apt-get -y install libreoffice libreoffice-l10n-gl libreoffice-l10n-es libreoffice-help-gl libreoffice-help-es
+        sudo apt -y install libreoffice libreoffice-l10n-gl libreoffice-l10n-es libreoffice-help-gl libreoffice-help-es
     }
 
     NAME="LibreOffice"
@@ -100,7 +100,7 @@ function install_libreoffice {
 }
 
 function install_thunderbird {
-    sudo apt-get -y install thunderbird thunderbird-locale-es thunderbird-locale-gl
+    sudo apt -y install thunderbird thunderbird-locale-es thunderbird-locale-gl
 }
 
 function install_neovim {
@@ -115,35 +115,35 @@ function install_calibre {
 
 function install_ciano {
     elementary
-    sudo apt-get -y install com.github.robertsanseries.ciano
+    sudo apt -y install com.github.robertsanseries.ciano
 }
 
 function install_dconf {
-    sudo apt-get -y install dconf-editor
+    sudo apt -y install dconf-editor
 }
 
 function install_easytag {
-    sudo apt-get -y install easytag
+    sudo apt -y install easytag
 }
 
 function install_etweaks {
     elementary
     sudo add-apt-repository -yu ppa:philip.scott/elementary-tweaks  
-    sudo apt-get -y install elementary-tweaks
+    sudo apt -y install elementary-tweaks
 }
 
 function install_formatter {
     elementary
-    sudo apt-get -y install com.github.djaler.formatter
+    sudo apt -y install com.github.djaler.formatter
 }
 
 function install_gimp {
-    sudo apt-get -y install gimp
+    sudo apt -y install gimp
 }
 
 # function install_gdocamlfuse {
 #     sudo add-apt-repository -yu ppa:alessandro-strada/ppa
-#     sudo apt-get -y install google-drive-ocamlfuse
+#     sudo apt -y install google-drive-ocamlfuse
 # }
 
 function install_rclone {
@@ -153,54 +153,54 @@ function install_rclone {
 
 function install_imageburner {
     elementary
-    sudo apt-get -y install com.github.artemanufrij.imageburner
+    sudo apt -y install com.github.artemanufrij.imageburner
 }
 
 function install_java8 {
     sudo add-apt-repository -yu ppa:webupd8team/java
-    sudo apt-get -y install oracle-java8-installer
+    sudo apt -y install oracle-java8-installer
 }
 
 function install_keepassxc {
     sudo add-apt-repository -yu ppa:phoerious/keepassxc
-    sudo apt-get -y install keepassxc
+    sudo apt -y install keepassxc
 }
 
 function install_megasync {
-    sudo apt-get -y install https://mega.nz/linux/MEGAsync/xUbuntu_18.04/amd64/megasync-xUbuntu_18.04_amd64.deb
+    sudo apt -y install https://mega.nz/linux/MEGAsync/xUbuntu_18.04/amd64/megasync-xUbuntu_18.04_amd64.deb
 }
 
 function install_playmymusic {
     elementary
-    sudo apt-get -y install com.github.artemanufrij.playmymusic
+    sudo apt -y install com.github.artemanufrij.playmymusic
 }
 
 function install_opera {
     sudo wget -qO- https://deb.opera.com/archive.key | sudo apt-key add -
     sudo add-apt-repository -yu "deb [arch=i386,amd64] https://deb.opera.com/opera-stable/ stable non-free"
-    sudo apt-get -y install opera-stable
+    sudo apt -y install opera-stable
 }
 
 function install_papirus {
     sudo add-apt-repository -yu ppa:papirus/papirus
-    sudo apt-get -y install papirus-icon-theme
+    sudo apt -y install papirus-icon-theme
 }
 
 function install_pdftricks {
     elementary
-    sudo apt-get -y install com.github.muriloventuroso.pdftricks
+    sudo apt -y install com.github.muriloventuroso.pdftricks
 }
 
 function install_spotify {
     curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
     echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
     update-repo spotify.list
-    sudo apt-get -y install spotify-client
+    sudo apt -y install spotify-client
 }
 
 function install_ulauncher {
     sudo add-apt-repository -yu ppa:agornostal/ulauncher
-    sudo apt-get -y install ulauncher
+    sudo apt -y install ulauncher
 }
 
 function install_youtube-dl {
@@ -209,15 +209,15 @@ function install_youtube-dl {
 }
 
 function install_zsh {
-    sudo apt-get -y install zsh
+    sudo apt -y install zsh
 }
 
 function install_hplip {
-    sudo apt-get -y install hplip hplip-gui hplip-doc
+    sudo apt -y install hplip hplip-gui hplip-doc
 }
 
 function install_wireshark {
-    sudo apt-get -y install wireshark
+    sudo apt -y install wireshark
 }
 
 function install_virtualbox {
@@ -225,7 +225,7 @@ function install_virtualbox {
     wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
     update-repo virtualbox.list
     vboxversion=$(apt search virtualbox | grep -E '^virtualbox-[0-9].[0-9]' | sort | tail -1 | cut -d"/" -f"1")
-    sudo apt-get -y install $vboxversion
+    sudo apt -y install $vboxversion
 }
 
 function install_neofetch {
@@ -240,37 +240,37 @@ function install_neofetch {
 }
 
 function install_vlc {
-    sudo apt-get -y install vlc
+    sudo apt -y install vlc
 }
 
 function install_terminal {
 
     function install_net-tools {
-        sudo apt-get -y install net-tools
+        sudo apt -y install net-tools
     }
 
     function install_trash-cli {
-        sudo apt-get -y install trash-cli
+        sudo apt -y install trash-cli
     }
 
     function install_git-all {
-        sudo apt-get -y install git-all
+        sudo apt -y install git-all
     }
 
     function install_build-essentials {
-        sudo apt-get -y install build-essential
+        sudo apt -y install build-essential
     }
 
     function install_ffmpeg {
-        sudo apt-get -y install ffmpeg
+        sudo apt -y install ffmpeg
     }
 
     function install_tlp {
-        sudo apt-get -y install tlp
+        sudo apt -y install tlp
     }
 
     function install_shellcheck {
-        sudo apt-get -y install shellcheck
+        sudo apt -y install shellcheck
     }
 
     function install_ripgrep {
@@ -278,7 +278,7 @@ function install_terminal {
     }
 
     function install_tree {
-        sudo apt-get -y install tree
+        sudo apt -y install tree
     }
 
     NAME="Terminal stuff"
@@ -310,23 +310,23 @@ function install_terminal {
 
 function install_teamviewer {
     wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb -O /tmp/teamviewer_amd64.deb \
-        && sudo dpkg -i /tmp/teamviewer_amd64.deb
+        && sudo apt -y install /tmp/teamviewer_amd64.deb
 }
 
 function install_synaptic {
-    sudo apt-get -y install synaptic
+    sudo apt -y install synaptic
 }
 
 function install_unrar {
-    sudo apt-get -y install unrar
+    sudo apt -y install unrar
 }
 
 function install_picard {
-    sudo apt-get -y install picard
+    sudo apt -y install picard
     # Install from PPA if it's not available in Ubuntu's repos.
     if [ $? -eq 100 ]; then
         sudo add-apt-repository -yu ppa:musicbrainz-developers/stable
-        sudo apt-get -y install picard
+        sudo apt -y install picard
     fi
 }
 
@@ -334,12 +334,12 @@ function install_anydesk {
     wget -qO - https://keys.anydesk.com/repos/DEB-GPG-KEY | sudo apt-key add -
     echo "deb http://deb.anydesk.com/ all main" | sudo tee /etc/apt/sources.list.d/anydesk-stable.list
     update-repo anydesk-stable.list
-    sudo apt-get -y install anydesk
+    sudo apt -y install anydesk
 }
 
 function install_handbrake {
     sudo add-apt-repository -yu ppa:stebbins/handbrake-releases
-    sudo apt-get -y install handbrake-gtk
+    sudo apt -y install handbrake-gtk
 }
 
 function install_mpv {
@@ -347,10 +347,10 @@ function install_mpv {
         wget -qO- https://non-gnu.uvt.nl/debian/uvt_key.asc | sudo apt-key add -
         echo "deb https://non-gnu.uvt.nl/debian $codename uvt" | sudo tee /etc/apt/sources.list.d/uvt.list
         update-repo uvt.list
-        sudo apt-get -y install mpv-git
+        sudo apt -y install mpv-git
     }
     function install_mpv_repo {
-        sudo apt-get -y install mpv
+        sudo apt -y install mpv
     }
 
     NAME="mpv"
@@ -375,12 +375,12 @@ function install_mpv {
 
 function install_planner {
     elementary
-    sudo apt-get -y install com.github.alainm23.planner
+    sudo apt -y install com.github.alainm23.planner
 }
 
 function install_screencast {
     elementary
-    sudo apt-get -y install com.github.artemanufrij.screencast
+    sudo apt -y install com.github.artemanufrij.screencast
 }
 
 function install_telegram {
@@ -397,5 +397,5 @@ function install_telegram {
 
 function install_timeshift {
     sudo add-apt-repository -yu ppa:teejee2008/timeshift
-    sudo apt-get -y install timeshift
+    sudo apt -y install timeshift
 }
