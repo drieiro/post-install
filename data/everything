@@ -8,6 +8,7 @@ function install_all {
     install_calibre
     install_ciano
     install_dconf
+    install_discord
     install_dropbox
     install_easytag
     install_etweaks
@@ -51,10 +52,10 @@ function install_all {
     install_wireshark
     install_youtube
     install_zsh
-#    install_vscodium
 #    install_anydesk
 #    install_chrome
 #    install_handbrake
 #    install_timeshift
+#    install_vscodium
     install_dotfiles    # Configure your dotfiles at 'data/dotfiles'
 }

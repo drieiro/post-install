@@ -45,6 +45,7 @@ function main {
         'install_chrome'        'Google Chrome' \
         'install_ciano'         'Ciano' \
         'install_dconf'         'dconf editor' \
+        'install_discord'       'Discord' \
         'install_dropbox'       'Dropbox' \
         'install_easytag'       'Easytag' \
         'install_etweaks'       'elementary tweaks' \

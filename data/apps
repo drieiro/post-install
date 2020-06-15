@@ -399,3 +399,7 @@ function install_timeshift {
     sudo add-apt-repository -yu ppa:teejee2008/timeshift
     sudo apt -y install timeshift
 }
+
+function install_discord {
+    wget -O /tmp/discord.deb https://discord.com/api/download?platform=linux&format=deb && sudo apt -y install /tmp/discord.deb
+}
