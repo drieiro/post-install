@@ -5,7 +5,7 @@ dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 # Warning about elementary apps in other distributions
 function elementary {
     if [ $(lsb_release -si) != 'elementary' ]; then
-        if [ ! -e /etc/apt/sources.list.d/elementary.list ]; then
+        if [ ! -e /etc/apt/sources.list.d/appcenter.list ]; then
         echo "You are not running elementary OS. This app will not work. :("
         echo "  If you want to install this app, install elementary's repository:"
         echo "  https://gist.githubusercontent.com/riesp/7058e71d52a2ce6a42e8b93f30f55473/raw/appcenter.sh"
