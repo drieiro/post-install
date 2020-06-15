@@ -54,6 +54,7 @@ function install_all {
     install_zsh
 #    install_anydesk
 #    install_chrome
+#    install_gdocamlfuse    
 #    install_handbrake
 #    install_timeshift
 #    install_vscodium

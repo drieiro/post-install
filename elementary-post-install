@@ -30,6 +30,15 @@ function import_functions {
     done
 }
 
+function internet {
+    if ping -c2 www.google.com &> /dev/null; then
+        echo_message success "There is an internet connection established!"
+    else
+        echo_message error "There is not an internet connection established."
+        exit 99
+    fi
+}
+
 function main {
     MAIN=$(eval `resize` && whiptail \
         --notags \
@@ -51,6 +60,7 @@ function main {
         'install_etweaks'       'elementary tweaks' \
         'install_firefox'       'Firefox' \
         'install_formatter'     'Formatter' \
+        'install_gdocamlfuse'   'google-drive-ocamlfuse' \
         'install_gimp'          'Gimp' \
         'install_handbrake'     'HandBrake' \
         'install_hplip'         'HPLIP' \
@@ -107,6 +117,7 @@ function quit {
 
 import_functions
 welcome
+internet
 dependencies
 check_os
 check_distribution

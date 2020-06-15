@@ -65,6 +65,7 @@ function install_firefox {
 function install_dropbox {
     echo "deb https://linux.dropbox.com/ubuntu $codename main" | sudo tee /etc/apt/sources.list.d/dropbox.list
     sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
+    update-repo dropbox.list
     sudo apt -y install dropbox
 }
 
@@ -104,8 +105,7 @@ function install_thunderbird {
 }
 
 function install_neovim {
-    curl -s https://gist.githubusercontent.com/riesp/9ac978b3aa17f43db25afa6cae7d1abd/raw/nvim_update \
-        | sudo bash
+    curl -s https://gist.githubusercontent.com/riesp/9ac978b3aa17f43db25afa6cae7d1abd/raw/epi_nvim | sudo bash
 }
 
 function install_calibre {
@@ -141,14 +141,13 @@ function install_gimp {
     sudo apt -y install gimp
 }
 
-# function install_gdocamlfuse {
-#     sudo add-apt-repository -yu ppa:alessandro-strada/ppa
-#     sudo apt -y install google-drive-ocamlfuse
-# }
+function install_gdocamlfuse {
+    sudo add-apt-repository -yu ppa:alessandro-strada/ppa
+    sudo apt -y install google-drive-ocamlfuse
+}
 
 function install_rclone {
-    curl -s https://gist.githubusercontent.com/riesp/1b7c6e691ae5ab64305c5079961a4c4a/raw/rclone_update \
-        | sudo bash
+    curl -s https://gist.githubusercontent.com/riesp/1b7c6e691ae5ab64305c5079961a4c4a/raw/epi_rclone | sudo bash
 }
 
 function install_imageburner {
@@ -274,7 +273,7 @@ function install_terminal {
     }
 
     function install_ripgrep {
-        curl -s https://gist.githubusercontent.com/riesp/d064bc39e0197d02a869fb7035d1fe94/raw/rg_update | sudo bash
+        curl -s https://gist.githubusercontent.com/riesp/d064bc39e0197d02a869fb7035d1fe94/raw/epi_rg | sudo bash
     }
 
     function install_tree {
