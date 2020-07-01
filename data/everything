@@ -15,6 +15,7 @@ function install_all {
     install_ffmpeg
     install_firefox
     install_formatter
+    install_fzf
     install_gimp
     install_git-all
     install_hplip

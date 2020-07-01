@@ -280,6 +280,11 @@ function install_terminal {
         sudo apt-get -y install tree
     }
 
+    function install_fzf {
+        git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+        ~/.fzf/install
+    }
+
     NAME="Terminal stuff"
     TERMINALSTUFF=$(eval `resize` && whiptail \
             --notags \
@@ -290,6 +295,7 @@ function install_terminal {
             $LINES $COLUMNS $(( $LINES - 12 )) \
             'install_build-essentials'   'build-essentials' \
             'install_ffmpeg'             'ffmpeg' \
+            'install_fzf'                'fzf' \
             'install_git-all'            'git-all' \
             'install_net-tools'          'net-tools' \
             'install_ripgrep'            'Ripgrep' \
