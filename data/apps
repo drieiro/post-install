@@ -282,8 +282,27 @@ function install_terminal {
         | awk '{print $2}' \
         | tr -d \", \
         | xargs wget -O $nftemp && cd /tmp \
-        && tar xzvf $nftemp && cd dylanaraps* \
+        && tar xzvf $nftemp && cd dylanaraps-neofetch* \
         && sudo make install
+    }
+
+    function install_pfetch {
+        # TODO: new version of pfetch should include a make file.
+        # https://github.com/dylanaraps/pfetch/releases
+        pftemp=$(mktemp)
+        rm -rf /tmp/dylanaraps-pfetch*
+        curl -s https://api.github.com/repos/dylanaraps/pfetch/releases/latest \
+        | grep "tarball" \
+        | awk '{print $2}' \
+        | tr -d \", \
+        | xargs wget -O $pftemp && cd /tmp \
+        && tar xzvf $pftemp && cd dylanaraps-pfetch* \
+        && sudo cp pfetch /usr/bin
+    }
+
+    function install_fff {
+        sudo git clone https://github.com/dylanaraps/fff.git /opt/fff \
+            && cd /opt/fff && sudo make install
     }
 
     NAME="Terminal stuff"
@@ -295,16 +314,18 @@ function install_terminal {
             --cancel-button "Go Back" \
             $LINES $COLUMNS $(( $LINES - 12 )) \
             'install_build-essentials'   'build-essentials' \
+            'install_fff'                'fff' \
             'install_ffmpeg'             'ffmpeg' \
             'install_fzf'                'fzf' \
             'install_git-all'            'git-all' \
+            'install_neofetch'           'Neofetch' \
             'install_net-tools'          'net-tools' \
+            'install_pfetch'             'pfetch' \
             'install_ripgrep'            'Ripgrep' \
             'install_shellcheck'         'shellcheck' \
             'install_tlp'                'tlp' \
             'install_trash-cli'          'trash-cli' \
             'install_tree'               'tree' \
-            'install_neofetch'           'Neofetch' \
             3>&1 1>&2 2>&3)
     # check exit status
     if [ $? = 0 ]; then

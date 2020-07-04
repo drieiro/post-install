@@ -12,6 +12,7 @@ function install_all {
     install_dropbox
     install_easytag
     install_etweaks
+    install_fff
     install_ffmpeg
     install_firefox
     install_formatter
@@ -31,6 +32,7 @@ function install_all {
     install_opera
     install_papirus
     install_pdftricks
+    install_pfetch
     install_picard
     install_playmymusic
     install_rclone
