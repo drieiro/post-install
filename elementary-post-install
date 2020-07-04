@@ -70,7 +70,6 @@ function main {
         'install_libreoffice'   'LibreOffice' \
         'install_megasync'      'MegaSync' \
         'install_mpv'           'mpv' \
-        'install_neofetch'      'Neofetch' \
         'install_neovim'        'Neovim' \
         'install_opera'         'Opera' \
         'install_papirus'       'Papirus Icon Theme' \

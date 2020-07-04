@@ -227,17 +227,6 @@ function install_virtualbox {
     sudo apt-get -y install $vboxversion
 }
 
-function install_neofetch {
-    nftemp=$(mktemp)
-    curl -s https://api.github.com/repos/dylanaraps/neofetch/releases/latest \
-    | grep "tarball" \
-    | awk '{print $2}' \
-    | tr -d \", \
-    | xargs wget -O $nftemp && cd /tmp \
-    && tar xzvf $nftemp && cd dylanaraps* \
-    && sudo make install
-}
-
 function install_vlc {
     sudo apt-get -y install vlc
 }
@@ -285,6 +274,18 @@ function install_terminal {
         ~/.fzf/install
     }
 
+    function install_neofetch {
+        nftemp=$(mktemp)
+        rm -rf /tmp/dylanaraps-neofetch*
+        curl -s https://api.github.com/repos/dylanaraps/neofetch/releases/latest \
+        | grep "tarball" \
+        | awk '{print $2}' \
+        | tr -d \", \
+        | xargs wget -O $nftemp && cd /tmp \
+        && tar xzvf $nftemp && cd dylanaraps* \
+        && sudo make install
+    }
+
     NAME="Terminal stuff"
     TERMINALSTUFF=$(eval `resize` && whiptail \
             --notags \
@@ -303,6 +304,7 @@ function install_terminal {
             'install_tlp'                'tlp' \
             'install_trash-cli'          'trash-cli' \
             'install_tree'               'tree' \
+            'install_neofetch'           'Neofetch' \
             3>&1 1>&2 2>&3)
     # check exit status
     if [ $? = 0 ]; then
