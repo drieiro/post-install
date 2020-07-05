@@ -21,7 +21,6 @@ function install_all {
     install_git-all
     install_hplip
     install_imageburner
-    install_java8
     install_keepassxc
     install_libreoffice_fresh # install_libreoffice_repo
     install_megasync
@@ -29,8 +28,6 @@ function install_all {
     install_neofetch
     install_neovim
     install_net-tools
-    install_opera
-    install_papirus
     install_pdftricks
     install_pfetch
     install_picard
@@ -54,12 +51,15 @@ function install_all {
     install_vlc
     install_vscode
     install_wireshark
-    install_youtube
+    install_youtube-dl
     install_zsh
 #    install_anydesk
 #    install_chrome
 #    install_gdocamlfuse    
 #    install_handbrake
+#    install_java8
+#    install_opera
+#    install_papirus
 #    install_timeshift
 #    install_vscodium
     install_dotfiles    # Configure your dotfiles at 'data/dotfiles'
