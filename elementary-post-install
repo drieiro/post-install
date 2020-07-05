@@ -86,6 +86,7 @@ function main {
         'install_terminal'      'Terminal stuff' \
         'install_thunderbird'   'Thunderbird' \
         'install_timeshift'     'Timeshift' \
+        'install_transmission'  'Transmission' \
         'install_ulauncher'     'Ulauncher' \
         'install_unrar'         'RAR' \
         'install_virtualbox'    'VirtualBox' \

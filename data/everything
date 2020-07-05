@@ -45,6 +45,7 @@ function install_all {
     install_telegram
     install_thunderbird
     install_tlp
+    install_transmission
     install_trash-cli
     install_tree
     install_ulauncher

@@ -109,7 +109,6 @@ function install_neovim {
 }
 
 function install_calibre {
-    elementary
     wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
 }
 
@@ -430,4 +429,8 @@ function install_timeshift {
 
 function install_discord {
     wget -O /tmp/discord.deb https://discord.com/api/download?platform=linux&format=deb && sudo apt-get -y install /tmp/discord.deb
+}
+
+function install_transmission {
+    sudo apt-get -y install transmission
 }
