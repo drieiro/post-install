@@ -240,8 +240,8 @@ function install_terminal {
         sudo apt-get -y install trash-cli
     }
 
-    function install_git-all {
-        sudo apt-get -y install git-all
+    function install_git {
+        sudo apt-get -y install git git-doc
     }
 
     function install_build-essentials {

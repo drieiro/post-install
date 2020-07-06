@@ -18,7 +18,7 @@ function install_all {
     install_formatter
     install_fzf
     install_gimp
-    install_git-all
+    install_git
     install_hplip
     install_imageburner
     install_keepassxc
