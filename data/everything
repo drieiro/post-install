@@ -22,6 +22,7 @@ function install_all {
     install_hplip
     install_imageburner
     install_keepassxc
+    install_la-capitaine
     install_libreoffice_fresh # install_libreoffice_repo
     install_megasync
     install_mpv_repo # install_mpv_fresh

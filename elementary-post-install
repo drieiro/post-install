@@ -67,6 +67,7 @@ function main {
         'install_imageburner'   'Imageburner' \
         'install_java8'         'Java8' \
         'install_keepassxc'     'KeePassXC' \
+        'install_la-capitaine'  'La Capitaine Icon Theme' \
         'install_libreoffice'   'LibreOffice' \
         'install_megasync'      'MegaSync' \
         'install_mpv'           'mpv' \

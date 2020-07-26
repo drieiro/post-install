@@ -316,7 +316,7 @@ function install_terminal {
             'install_fff'                'fff' \
             'install_ffmpeg'             'ffmpeg' \
             'install_fzf'                'fzf' \
-            'install_git-all'            'git-all' \
+            'install_git'                'Git' \
             'install_neofetch'           'Neofetch' \
             'install_net-tools'          'net-tools' \
             'install_pfetch'             'pfetch' \
@@ -434,3 +434,8 @@ function install_discord {
 function install_transmission {
     sudo apt-get -y install transmission
 }
+
+function install_la-capitaine {
+    sudo git clone https://github.com/keeferrourke/la-capitaine-icon-theme.git /usr/share/icons/la-capitaine-icon-theme
+}
+
