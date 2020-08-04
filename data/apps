@@ -304,6 +304,11 @@ function install_terminal {
             && cd /opt/fff && sudo make install
     }
 
+    function install_bashtop {
+        git clone https://github.com/aristocratos/bashtop.git /opt/bashtop
+        cd /opt/bashtop && sudo make install
+    }
+
     NAME="Terminal stuff"
     TERMINALSTUFF=$(eval `resize` && whiptail \
             --notags \
@@ -312,6 +317,7 @@ function install_terminal {
             --ok-button "Install" \
             --cancel-button "Go Back" \
             $LINES $COLUMNS $(( $LINES - 12 )) \
+            'install_bashtop'            'Bashtop' \
             'install_build-essentials'   'build-essentials' \
             'install_fff'                'fff' \
             'install_ffmpeg'             'ffmpeg' \
