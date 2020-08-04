@@ -305,8 +305,8 @@ function install_terminal {
     }
 
     function install_bashtop {
-        git clone https://github.com/aristocratos/bashtop.git /opt/bashtop
-        cd /opt/bashtop && sudo make install
+        sudo git clone https://github.com/aristocratos/bashtop.git /opt/bashtop \
+        && cd /opt/bashtop && sudo make install
     }
 
     NAME="Terminal stuff"
