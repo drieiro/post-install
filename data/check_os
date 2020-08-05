@@ -27,7 +27,7 @@ function check_distribution {
                         echo_message success "You are using $(lsb_release -si). :D"
 			echo "Proceeding."
 		# if Mint or elementary
-		elif lsb_release -ds | grep -qE '(Mint|Zorin)'; then
+		elif lsb_release -ds | grep -qE '(Mint|Zorin|Pop)'; then
 			echo_message info 'Current distribution is: '$(lsb_release -ds)
 			echo_message success "You are using an Ubuntu-based distribution. It's probably fine. :)"
 			echo "Proceeding."
