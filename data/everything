@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+source $dir/apps
+
 function install_all {
     # Comment all programs you don't want to install
     # when executing the 'Install everything' option of the main script
