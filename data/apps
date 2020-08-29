@@ -435,7 +435,8 @@ function install_timeshift {
 }
 
 function install_discord {
-    wget -O /tmp/discord.deb https://discord.com/api/download?platform=linux&format=deb && sudo apt-get -y install /tmp/discord.deb
+    wget -O /tmp/discord.deb https://discord.com/api/download?platform=linux&format=deb
+    [ -e /tmp/discord.deb ] && sudo apt-get -y install /tmp/discord.deb
 }
 
 function install_transmission {
