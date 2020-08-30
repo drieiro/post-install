@@ -80,6 +80,7 @@ function main {
         'install_playmymusic'   'Melody' \
         'install_rclone'        'rclone' \
         'install_screencast'    'Screencast' \
+        'install_skype'         'Skype' \
         'install_spotify'       'Spotify' \
         'install_synaptic'      'Synaptic' \
         'install_teamviewer'    'TeamViewer' \

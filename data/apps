@@ -447,3 +447,7 @@ function install_la-capitaine {
     sudo git clone https://github.com/keeferrourke/la-capitaine-icon-theme.git /usr/share/icons/la-capitaine-icon-theme
 }
 
+function install_skype {
+    wget -O /tmp/skypeforlinux-64.deb https://go.skype.com/skypeforlinux-64.deb
+    [ -e /tmp/skypeforlinux-64.deb ] && sudo apt-get -y install /tmp/skypeforlinux-64.deb
+}

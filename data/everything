@@ -41,6 +41,7 @@ function install_all {
     install_ripgrep
     install_screencast
     install_shellcheck
+    install_skype
     install_spotify
     install_synaptic
     install_teamviewer
