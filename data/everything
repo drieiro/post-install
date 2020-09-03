@@ -6,6 +6,7 @@ source $dir/apps
 function install_all {
     # Comment all programs you don't want to install
     # when executing the 'Install everything' option of the main script
+    install_auto-cpufreq
     install_bashtop
     install_brave
     install_build-essentials
