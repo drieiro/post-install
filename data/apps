@@ -316,6 +316,11 @@ function install_terminal {
         && cd /opt/bashtop && sudo make install
     }
 
+    function install_bpytop {
+        sudo git clone https://github.com/aristocratos/bpytop.git /opt/bpytop \
+        && cd /opt/bpytop && sudo make install
+    }
+
     NAME="Terminal stuff"
     TERMINALSTUFF=$(eval `resize` && whiptail \
             --notags \
@@ -442,8 +447,12 @@ function install_timeshift {
 }
 
 function install_discord {
-    wget -O /tmp/discord.deb https://discord.com/api/download?platform=linux&format=deb
-    [ -e /tmp/discord.deb ] && sudo apt-get -y install /tmp/discord.deb
+    if [ $(lsb_release -si) = 'Pop' ]; then
+        sudo apt-get -y install discord
+    else
+        wget -O /tmp/discord.deb https://discord.com/api/download?platform=linux&format=deb
+        [ -e /tmp/discord.deb ] && sudo apt-get -y install /tmp/discord.deb
+    fi
 }
 
 function install_transmission {
