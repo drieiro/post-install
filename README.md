@@ -1,6 +1,6 @@
 # elementary post install
 
-My [elementary](https://elementary.io) post install script, based on Sam Hewitt's [ubuntu-post-install](https://github.com/snwh/ubuntu-post-install). It should work on Ubuntu and its derivates.
+My post install script, based on Sam Hewitt's [ubuntu-post-install](https://github.com/snwh/ubuntu-post-install). It should work on Ubuntu and its derivates.
 
 ## Configuration 
 
@@ -10,6 +10,6 @@ My [elementary](https://elementary.io) post install script, based on Sam Hewitt'
 
 ## Usage
 
-    git clone https://github.com/riesp/post-install.git
+    git clone https://github.com/drieiro/post-install.git
     cd post-install
-    ./elementary-post-install
+    ./post-install

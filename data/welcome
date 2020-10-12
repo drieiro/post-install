@@ -1,24 +1,12 @@
 #!/usr/bin/env bash
 
 function welcome {
-    cat << EOF
-         eeeeeeeeeeeeeeeee            riesp@elementary-post-install
-      eeeeeeeeeeeeeeeeeeeeeee         --------
-    eeeee  eeeeeeeeeeee   eeeee       OS: elementary OS
-  eeee   eeeee       eee     eeee     Description: 
- eeee   eeee          eee     eeee      elementary-post-install script, based on
-eee    eee            eee       eee     Sam Hewitt's ubuntu-post-install.
-eee   eee            eee        eee   
-ee    eee           eeee       eeee  
-ee    eee         eeeee      eeeeee 
-ee    eee       eeeee      eeeee ee   
-eee   eeee   eeeeee      eeeee  eee  
-eee    eeeeeeeeee     eeeeee    eee 
- eeeeeeeeeeeeeeeeeeeeeeee    eeeee 
-  eeeeeeee eeeeeeeeeeee      eeee   
-    eeeee                 eeeee    
-      eeeeeee         eeeeeee 
-         eeeeeeeeeeeeeeeee                                    
-
+    cat << "EOF"
+ ____           _     ___           _        _ _ 
+|  _ \ ___  ___| |_  |_ _|_ __  ___| |_ __ _| | |
+| |_) / _ \/ __| __|  | || '_ \/ __| __/ _` | | |
+|  __/ (_) \__ \ |_   | || | | \__ \ || (_| | | |
+|_|   \___/|___/\__| |___|_| |_|___/\__\__,_|_|_|
+                                                 
 EOF
 }

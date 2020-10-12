@@ -9,7 +9,7 @@ tabs 4
 clear
 
 # Script title
-TITLE="elementary-post-install"
+TITLE="post-install"
 
 # Install script dependencies
 function dependencies {
