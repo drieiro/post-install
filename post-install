@@ -62,6 +62,7 @@ function main {
         'install_formatter'     'Formatter' \
         'install_gdocamlfuse'   'google-drive-ocamlfuse' \
         'install_gimp'          'Gimp' \
+        'install_gnometweaks'   'gnome-tweaks' \
         'install_handbrake'     'HandBrake' \
         'install_hplip'         'HPLIP' \
         'install_imageburner'   'Imageburner' \
@@ -80,6 +81,7 @@ function main {
         'install_playmymusic'   'Melody' \
         'install_rclone'        'rclone' \
         'install_screencast'    'Screencast' \
+        'install_simplescreenrecorder'  'simplescreenrecorder' \
         'install_skype'         'Skype' \
         'install_spotify'       'Spotify' \
         'install_synaptic'      'Synaptic' \

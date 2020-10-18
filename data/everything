@@ -6,17 +6,17 @@ source $dir/apps
 function install_all {
     # Comment all programs you don't want to install
     # when executing the 'Install everything' option of the main script
+    install_anydesk
     install_auto-cpufreq
     install_bashtop
+    install_bpytop
     install_brave
     install_build-essentials
     install_calibre
-    install_ciano
     install_dconf
     install_discord
     install_dropbox
     install_easytag
-    install_etweaks
     install_fff
     install_ffmpeg
     install_firefox
@@ -24,32 +24,27 @@ function install_all {
     install_fzf
     install_gimp
     install_git
+    install_gnometweaks
     install_hplip
     install_imageburner
     install_keepassxc
-    install_la-capitaine
     install_libreoffice_fresh # install_libreoffice_repo
-    install_megasync
     install_mpv_repo # install_mpv_fresh
     install_neofetch
     install_neovim
     install_net-tools
-    install_pdftricks
     install_pfetch
     install_picard
-    install_playmymusic
     install_rclone
     install_ripgrep
-    install_screencast
     install_shellcheck
+    install_simplescreenrecorder
     install_skype
     install_spotify
     install_synaptic
-    install_teamviewer
     install_telegram
     install_thunderbird
     install_tlp
-    install_transmission
     install_trash-cli
     install_tree
     install_ulauncher
@@ -60,14 +55,22 @@ function install_all {
     install_wireshark
     install_youtube-dl
     install_zsh
-#    install_anydesk
 #    install_chrome
+#    install_ciano
+#    install_etweaks
 #    install_gdocamlfuse    
 #    install_handbrake
 #    install_java8
+#    install_la-capitaine
+#    install_megasync
 #    install_opera
 #    install_papirus
+#    install_pdftricks
+#    install_playmymusic
+#    install_screencast
+#    install_teamviewer
 #    install_timeshift
+#    install_transmission
 #    install_vscodium
     install_dotfiles    # Configure your dotfiles at 'data/dotfiles'
 }

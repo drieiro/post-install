@@ -331,6 +331,7 @@ function install_terminal {
             $LINES $COLUMNS $(( $LINES - 12 )) \
             'install_auto-cpufreq'       'auto-cpufreq' \
             'install_bashtop'            'Bashtop' \
+            'install_bpytop'             'bpytop' \
             'install_build-essentials'   'build-essentials' \
             'install_fff'                'fff' \
             'install_ffmpeg'             'ffmpeg' \
@@ -466,4 +467,16 @@ function install_la-capitaine {
 function install_skype {
     wget -O /tmp/skypeforlinux-64.deb https://go.skype.com/skypeforlinux-64.deb
     [ -e /tmp/skypeforlinux-64.deb ] && sudo apt-get -y install /tmp/skypeforlinux-64.deb
+}
+
+function install_simplescreenrecorder {
+    sudo apt-get -y install simplescreenrecorder
+}
+
+function install_gnometweaks {
+    if echo $XDG_CURRENT_DESKTOP | grep -q 'GNOME' ; then 
+        sudo apt-get -y install gnome-tweaks
+    else
+        echo "You are not using GNOME desktop."
+    fi
 }
