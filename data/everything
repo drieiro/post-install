@@ -47,7 +47,6 @@ function install_all {
     install_tlp
     install_trash-cli
     install_tree
-    install_ulauncher
     install_unrar
     install_virtualbox
     install_vlc
@@ -71,6 +70,7 @@ function install_all {
 #    install_teamviewer
 #    install_timeshift
 #    install_transmission
+#    install_ulauncher
 #    install_vscodium
     install_dotfiles    # Configure your dotfiles at 'data/dotfiles'
 }
