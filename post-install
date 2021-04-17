@@ -66,13 +66,11 @@ function main {
         'install_imageburner'   'Imageburner' \
         'install_java8'         'Java8' \
         'install_keepassxc'     'KeePassXC' \
-        'install_la-capitaine'  'La Capitaine Icon Theme' \
         'install_libreoffice'   'LibreOffice' \
         'install_megasync'      'MegaSync' \
         'install_mpv'           'mpv' \
         'install_neovim'        'Neovim' \
         'install_opera'         'Opera' \
-        'install_papirus'       'Papirus Icon Theme' \
         'install_pdftricks'     'PDF Tricks' \
         'install_picard'        'MusicBrainz Picard' \
         'install_planner'       'Planner' \
@@ -85,6 +83,7 @@ function main {
         'install_teamviewer'    'TeamViewer' \
         'install_telegram'      'Telegram' \
         'install_terminal'      'Terminal stuff' \
+        'install_themes'        'Themes and icons' \
         'install_thunderbird'   'Thunderbird' \
         'install_timeshift'     'Timeshift' \
         'install_transmission'  'Transmission' \

@@ -178,11 +178,6 @@ function install_opera {
     sudo apt-get -y install opera-stable
 }
 
-function install_papirus {
-    sudo add-apt-repository -yu ppa:papirus/papirus
-    sudo apt-get -y install papirus-icon-theme
-}
-
 function install_pdftricks {
     elementary
     sudo apt-get -y install com.github.muriloventuroso.pdftricks
@@ -460,10 +455,6 @@ function install_transmission {
     sudo apt-get -y install transmission
 }
 
-function install_la-capitaine {
-    sudo git clone https://github.com/keeferrourke/la-capitaine-icon-theme.git /usr/share/icons/la-capitaine-icon-theme
-}
-
 function install_skype {
     wget -O /tmp/skypeforlinux-64.deb https://go.skype.com/skypeforlinux-64.deb
     [ -e /tmp/skypeforlinux-64.deb ] && sudo apt-get -y install /tmp/skypeforlinux-64.deb
@@ -478,5 +469,36 @@ function install_gnometweaks {
         sudo apt-get -y install gnome-tweaks
     else
         echo "You are not using GNOME desktop."
+    fi
+}
+
+function install_themes {
+
+    function install_la-capitaine {
+        sudo git clone https://github.com/keeferrourke/la-capitaine-icon-theme.git /usr/share/icons/la-capitaine-icon-theme
+    }
+
+    function install_papirus {
+        sudo add-apt-repository -yu ppa:papirus/papirus
+        sudo apt-get -y install papirus-icon-theme
+    }
+
+    NAME="Themes and icons"
+    TERMINALSTUFF=$(eval `resize` && whiptail \
+            --notags \
+            --title "Install $NAME" \
+            --menu "\nWhat would you like to install?" \
+            --ok-button "Install" \
+            --cancel-button "Go Back" \
+            $LINES $COLUMNS $(( $LINES - 12 )) \
+            'install_la-capitaine'  'La Capitaine Icon Theme' \
+            'install_papirus'       'Papirus Icon Theme' \
+            3>&1 1>&2 2>&3)
+    # check exit status
+    if [ $? = 0 ]; then
+            $TERMINALSTUFF
+    else
+            # Cancelled
+            main
     fi
 }
