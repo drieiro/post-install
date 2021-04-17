@@ -48,6 +48,7 @@ function main {
         --cancel-button "Quit" \
         $LINES $COLUMNS $(( $LINES - 12 )) \
         'install_dotfiles'      'Install dotfiles' \
+        'install_alacritty'     'Alacritty' \
         'install_anydesk'       'AnyDesk' \
         'install_brave'         'Brave Browser' \
         'install_calibre'       'Calibre' \

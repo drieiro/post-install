@@ -502,3 +502,12 @@ function install_themes {
             main
     fi
 }
+
+function install_alacritty {
+    if [ $(lsb_release -si) = 'Pop' ]; then
+        sudo apt-get -y install alacritty 
+    else
+        sudo add-apt-repository -yu ppa:mmstick76/alacritty
+        sudo apt install alacritty
+    fi
+}
