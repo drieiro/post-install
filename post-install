@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 #
-# elementary-post-install
+# post-install
 # Based on ubuntu-post-install by Sam Hewitt <sam@snwh.org>
+# github.com/drieiro/post-install
 #
 
 # tab width
@@ -46,22 +47,19 @@ function main {
         --menu "\nWhat would you like to install?" \
         --cancel-button "Quit" \
         $LINES $COLUMNS $(( $LINES - 12 )) \
-        'install_all'           'Install everything' \
         'install_dotfiles'      'Install dotfiles' \
         'install_anydesk'       'AnyDesk' \
         'install_brave'         'Brave Browser' \
         'install_calibre'       'Calibre' \
         'install_chrome'        'Google Chrome' \
-        'install_ciano'         'Ciano' \
         'install_dconf'         'dconf editor' \
         'install_discord'       'Discord' \
         'install_dropbox'       'Dropbox' \
         'install_easytag'       'Easytag' \
         'install_etweaks'       'elementary tweaks' \
         'install_firefox'       'Firefox' \
-        'install_formatter'     'Formatter' \
         'install_gdocamlfuse'   'google-drive-ocamlfuse' \
-        'install_gimp'          'Gimp' \
+        'install_gimp'          'GIMP' \
         'install_gnometweaks'   'gnome-tweaks' \
         'install_handbrake'     'HandBrake' \
         'install_hplip'         'HPLIP' \
@@ -80,7 +78,6 @@ function main {
         'install_planner'       'Planner' \
         'install_playmymusic'   'Melody' \
         'install_rclone'        'rclone' \
-        'install_screencast'    'Screencast' \
         'install_simplescreenrecorder'  'simplescreenrecorder' \
         'install_skype'         'Skype' \
         'install_spotify'       'Spotify' \

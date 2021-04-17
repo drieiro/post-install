@@ -111,10 +111,10 @@ function install_calibre {
     sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
 }
 
-function install_ciano {
-    elementary
-    sudo apt-get -y install com.github.robertsanseries.ciano
-}
+# function install_ciano {
+#     elementary
+#     sudo apt-get -y install com.github.robertsanseries.ciano
+# }
 
 function install_dconf {
     sudo apt-get -y install dconf-editor
@@ -130,10 +130,10 @@ function install_etweaks {
     sudo apt-get -y install elementary-tweaks
 }
 
-function install_formatter {
-    elementary
-    sudo apt-get -y install com.github.djaler.formatter
-}
+# function install_formatter {
+#     elementary
+#     sudo apt-get -y install com.github.djaler.formatter
+# }
 
 function install_gimp {
     sudo apt-get -y install gimp
@@ -425,10 +425,10 @@ function install_planner {
     sudo apt-get -y install com.github.alainm23.planner
 }
 
-function install_screencast {
-    elementary
-    sudo apt-get -y install com.github.artemanufrij.screencast
-}
+# function install_screencast {
+#     elementary
+#     sudo apt-get -y install com.github.artemanufrij.screencast
+# }
 
 function install_telegram {
     TGTEMP=$(mktemp)
