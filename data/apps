@@ -62,10 +62,16 @@ function install_firefox {
 }
 
 function install_dropbox {
-    echo "deb https://linux.dropbox.com/ubuntu $codename main" | sudo tee /etc/apt/sources.list.d/dropbox.list
-    sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
-    update-repo dropbox.list
-    sudo apt-get -y install dropbox
+
+    if echo $XDG_CURRENT_DESKTOP | grep -q 'GNOME' ; then 
+        sudo apt-get -y install nautilus-dropbox
+    else
+        echo "deb https://linux.dropbox.com/ubuntu $codename main" | sudo tee /etc/apt/sources.list.d/dropbox.list
+        sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
+        update-repo dropbox.list
+        sudo apt-get -y install dropbox
+
+    fi
 }
 
 function install_libreoffice {
@@ -508,6 +514,17 @@ function install_alacritty {
         sudo apt-get -y install alacritty 
     else
         sudo add-apt-repository -yu ppa:mmstick76/alacritty
-        sudo apt install alacritty
+        sudo apt-get -y install alacritty
     fi
+}
+
+function install_bashblog {
+    sudo git clone https://github.com/cfenollosa/bashblog.git /opt/bashblog
+    sudo ln -s /opt/bashblog/bb.sh /usr/local/bin/bb
+}
+
+function install_linuxmintwebappmanager {
+    wam_filename=$(curl -s http://packages.linuxmint.com/pool/main/w/webapp-manager/ | grep -o "\"webapp-manager.*.deb\"" | tr -d \")
+    wget -O /tmp/$wam_filename http://packages.linuxmint.com/pool/main/w/webapp-manager/$wam_filename
+    sudo apt-get -y install /tmp/$wam_filename
 }

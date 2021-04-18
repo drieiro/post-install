@@ -50,6 +50,7 @@ function main {
         'install_dotfiles'      'Install dotfiles' \
         'install_alacritty'     'Alacritty' \
         'install_anydesk'       'AnyDesk' \
+        'install_bashblog'      'Bashblog' \
         'install_brave'         'Brave Browser' \
         'install_calibre'       'Calibre' \
         'install_chrome'        'Google Chrome' \
@@ -68,6 +69,7 @@ function main {
         'install_java8'         'Java8' \
         'install_keepassxc'     'KeePassXC' \
         'install_libreoffice'   'LibreOffice' \
+        'install_linuxmintwebappmanager'           'Linux Mint Webapp Manager' \
         'install_megasync'      'MegaSync' \
         'install_mpv'           'mpv' \
         'install_neovim'        'Neovim' \
