@@ -1,6 +1,6 @@
 # post install
 
-My post install script, based on Sam Hewitt's [ubuntu-post-install](https://github.com/snwh/ubuntu-post-install). It should work on Ubuntu and its derivates.
+My post install script, based on Sam Hewitt's [ubuntu-post-install](https://github.com/snwh/ubuntu-post-install). It should work on Ubuntu and its derivatives.
 
 ## Configuration 
 
