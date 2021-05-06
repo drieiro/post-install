@@ -98,6 +98,7 @@ function main {
         'install_vscodium'      'VSCodium' \
         'install_wireshark'     'Wireshark' \
         'install_youtube-dl'    'youtube-dl' \
+        'install_yt-dlp'        'yt-dlp' \
         'install_zsh'           'zsh' \
         3>&1 1>&2 2>&3)
     if [ $? = 0 ]; then

@@ -206,6 +206,11 @@ function install_youtube-dl {
     sudo chmod a+rx /usr/local/bin/youtube-dl
 }
 
+function install_yt-dlp {
+    sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
+    sudo chmod a+rx /usr/local/bin/yt-dlp
+}
+
 function install_zsh {
     sudo apt-get -y install zsh
 }
@@ -259,7 +264,7 @@ function install_terminal {
     }
 
     function install_auto-cpufreq {
-        git clone https://github.com/AdnanHodzic/auto-cpufreq.git /opt/auto-cpufreq
+        sudo git clone https://github.com/AdnanHodzic/auto-cpufreq.git /opt/auto-cpufreq
         cd auto-cpufreq && sudo ./auto-cpufreq-installer
         sudo auto-cpufreq --install
     }
