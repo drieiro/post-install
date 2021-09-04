@@ -335,6 +335,10 @@ function install_terminal {
         sudo bash "$dir/custom/glow.sh"
     } 
 
+    function install_bat {
+        sudo bash "$dir/custom/bat.sh"
+    } 
+
     NAME="Terminal stuff"
     TERMINALSTUFF=$(eval `resize` && whiptail \
             --notags \
@@ -345,6 +349,7 @@ function install_terminal {
             $LINES $COLUMNS $(( $LINES - 12 )) \
             'install_auto-cpufreq'       'auto-cpufreq' \
             'install_bashtop'            'Bashtop' \
+            'install_bat'                'bat' \
             'install_bpytop'             'bpytop' \
             'install_build-essentials'   'build-essentials' \
             'install_fff'                'fff' \
