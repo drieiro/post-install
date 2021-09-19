@@ -547,3 +547,16 @@ function install_linuxmintwebappmanager {
     wget -O /tmp/$wam_filename http://packages.linuxmint.com/pool/main/w/webapp-manager/$wam_filename
     sudo apt-get -y install /tmp/$wam_filename
 }
+
+function install_obsidian {
+    if [ -x "$(command -v obsidian)" ]; then
+        echo "Obsidian is already installed."
+    else
+        curl -s https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest \
+        | grep "browser_download_url" \
+        | grep ".*\.[0-9]*\.AppImage" \
+        | awk '{print $2}' \
+        | tr -d \" \
+        | xargs wget -O "/usr/local/bin/obsidian" && sudo chmod +x /usr/local/bin/obsidian
+    fi
+}

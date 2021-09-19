@@ -73,6 +73,7 @@ function main {
         'install_megasync'      'MegaSync' \
         'install_mpv'           'mpv' \
         'install_neovim'        'Neovim' \
+        'install_obsidian'      'Obsidian' \
         'install_opera'         'Opera' \
         'install_pdftricks'     'PDF Tricks' \
         'install_picard'        'MusicBrainz Picard' \
