@@ -36,7 +36,7 @@ download() {
     | grep "linux_amd64.deb\"" \
     | awk '{print $2}' \
     | tr -d \" \
-    | xargs wget -O "$tmpfile" \
+    | xargs wget -nv -O "$tmpfile" \
     && dpkg -i "$tmpfile"
 }
 

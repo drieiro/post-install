@@ -36,7 +36,7 @@ download() {
     | grep "linux-amd64.deb" \
     | awk '{print $2}' \
     | tr -d \" \
-    | xargs wget -O "$tmpfile" \
+    | xargs wget -nv -O "$tmpfile" \
     && if type sudo &>/dev/null; then
         sudo dpkg -i "$tmpfile"
     else

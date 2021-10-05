@@ -33,10 +33,10 @@ new_version=$(get_new_version)
 download() {
     curl -s https://api.github.com/repos/barnumbirr/alacritty-debian/releases/latest \
     | grep "browser_download_url" \
-    | grep "amd64_debian_buster.deb" \
+    | grep "amd64_debian_bullseye.deb" \
     | awk '{print $2}' \
     | tr -d \" \
-    | xargs wget -O "$tmpfile" \
+    | xargs wget -nv -O "$tmpfile" \
     && if type sudo &>/dev/null; then
         sudo dpkg -i "$tmpfile"
     else

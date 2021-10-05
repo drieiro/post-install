@@ -36,7 +36,7 @@ download() {
     | grep ".appimage\"" \
     | awk '{print $2}' \
     | tr -d \" \
-    | xargs wget -O $location \
+    | xargs wget -nv -O $location \
     && chmod +x $location
 }
 
