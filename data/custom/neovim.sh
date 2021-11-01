@@ -16,7 +16,7 @@ name="Neovim"
 location="/usr/bin/nvim"
 
 get_version() {
-    nvim --version | head -1 | awk '{print $2}' 2>/dev/null
+    command -v nvim &>/dev/null && nvim --version | head -1 | awk '{print $2}' 2>/dev/null
 }
 
 version=$(get_version)

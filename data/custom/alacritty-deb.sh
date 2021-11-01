@@ -16,7 +16,7 @@ name="alacritty"
 tmpfile=$(mktemp)
 
 get_version(){
-    alacritty --version | head -1 | awk '{print $2}' 2>/dev/null
+    command -v alacritty &>/dev/null && alacritty --version | head -1 | awk '{print $2}' 2>/dev/null
 }
 
 version="v$(get_version)"

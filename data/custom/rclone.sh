@@ -16,7 +16,7 @@ name="rclone"
 tmpfile=$(mktemp)
 
 get_version(){
-    rclone --version | head -1 | awk '{print $2}' 2>/dev/null
+    command -v rclone &>/dev/null && rclone --version | head -1 | awk '{print $2}' 2>/dev/null
 }
 
 version=$(get_version)

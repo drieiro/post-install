@@ -16,7 +16,7 @@ name="ripgrep"
 tmpfile=$(mktemp)
 
 get_version(){
-    rg --version | head -1 | awk '{print $2}' 2>/dev/null
+    command -v rg &>/dev/null && rg --version | head -1 | awk '{print $2}' 2>/dev/null
 }
 
 version=$(get_version)

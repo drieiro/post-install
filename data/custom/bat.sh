@@ -16,7 +16,7 @@ name="bat"
 tmpfile=$(mktemp)
 
 get_version(){
-    bat --version | head -1 | awk '{print $2}' 2>/dev/null
+    command -v bat &>/dev/null && bat --version | head -1 | awk '{print $2}' 2>/dev/null
 }
 
 version="v$(get_version)"

@@ -16,7 +16,7 @@ name="glow"
 tmpfile=$(mktemp)
 
 get_version() {
-    echo "v$(glow -v | awk '{print $3}' 2>/dev/null)"
+    command -v glow &>/dev/null && echo "v$(glow -v | awk '{print $3}' 2>/dev/null)"
 }
 
 version=$(get_version)
