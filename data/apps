@@ -456,6 +456,7 @@ function install_telegram {
     curl -s https://api.github.com/repos/telegramdesktop/tdesktop/releases/latest \
         | grep "browser_download_url" \
         | grep "tsetup\." \
+        | grep "tar.xz" \
         | awk '{print $2}' \
         | tr -d \" \
         | xargs wget -O $TGTEMP \
